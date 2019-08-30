@@ -1,4 +1,0 @@
-#+title: Cherno OpenGL Vertex Buffer
-#+author: 
-#+date: <2019-08-22 Thu 09:41>
-- [[https://www.youtube.com/watch?v=0p9VxImr7Y0&list=PLlrATfBNZ98foTJPJ_Ev03o2oq3-GGOS2&index=4][youtube: Vertex Buffer]]
