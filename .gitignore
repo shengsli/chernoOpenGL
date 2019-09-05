@@ -1,0 +1,13 @@
+.vs
+*.suo
+*.db
+*.exe
+*.ilk
+*.pdb
+*.obj
+*.log
+*.tlog
+*.lastbuildstate
+*.idb
+*.opendb
+*.pdb
