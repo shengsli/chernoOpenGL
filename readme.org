@@ -1,6 +1,7 @@
-#+title: Cherno OpenGL Vertex Attributes and Layouts
+#+title: Cherno OpenGL How Shaders Work in OpenGL
 #+author: 
-#+date: <2019-08-22 Thu 09:41>
-- [[https://www.youtube.com/watch?v=x0H--CL2tUI&list=PLlrATfBNZ98foTJPJ_Ev03o2oq3-GGOS2&index=5][youtube: Vertex Attributes and Layouts]]
-- A vertex can mean a lot of things, a colour, a position, a plane, ...
-- ~glVertexAttribPointer()~
+#+date: <2019-09-05 Thu 16:50>
+- [[https://www.youtube.com/watch?v=5W7JLgFCkwI&list=PLlrATfBNZ98foTJPJ_Ev03o2oq3-GGOS2&index=6][youtube: How Shaders Work in OpenGL]]
+* 2 common shaders
+** Vertex shader
+** Fragament shader (aka. pixel shader)
