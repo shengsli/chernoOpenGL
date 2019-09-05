@@ -25,6 +25,9 @@ int main(void)
 	glBindBuffer(GL_ARRAY_BUFFER, buffer);//bind buffer before draw
 	glBufferData(GL_ARRAY_BUFFER, 6*sizeof(float), positions, GL_STATIC_DRAW);//put data into buffer
 
+	glEnableVertexAttribArray(0);
+	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, (const void *)0);
+
 	while (!glfwWindowShouldClose(window)) {/* Loop until the user closes the window */
 		glClear(GL_COLOR_BUFFER_BIT);/* Render here */
 
