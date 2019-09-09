@@ -1,5 +1,5 @@
-#+title: Cherno OpenGL Writing a Shader in OpenGL
+#+title: Cherno OpenGL 08 How I Deal with Shaders in OpenGL
 #+author: 
 #+date: <2019-08-22 Thu 09:41>
-- [[https://www.youtube.com/watch?v=71BLZwRGUJE&list=PLlrATfBNZ98foTJPJ_Ev03o2oq3-GGOS2&index=8&t=0s][youtube: Writing a Shader in OpenGL]]
-- draw a red triangle
+- [[https://www.youtube.com/watch?v=2pv0Fbo-7ms&list=PLlrATfBNZ98foTJPJ_Ev03o2oq3-GGOS2&index=8][YouTube: How I Deal with Shaders in OpenGL]]
+- a better way to write shaders: craete a shader file
