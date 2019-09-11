@@ -1,4 +1,4 @@
-#+title: Cherno OpenGL Vertex Attributes and Layouts
+#+title: Cherno OpenGL 05 Vertex Attributes and Layouts
 #+author: 
 #+date: <2019-08-22 Thu 09:41>
 - [[https://www.youtube.com/watch?v=x0H--CL2tUI&list=PLlrATfBNZ98foTJPJ_Ev03o2oq3-GGOS2&index=5][youtube: Vertex Attributes and Layouts]]
