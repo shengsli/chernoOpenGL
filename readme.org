@@ -1,5 +1,5 @@
 #+title: Cherno OpenGL Writing a Shader in OpenGL
 #+author: 
-#+date: <2019-08-22 Thu 09:41>
+#+date: <2019-09-06 Fri 09:41>
 - [[https://www.youtube.com/watch?v=71BLZwRGUJE&list=PLlrATfBNZ98foTJPJ_Ev03o2oq3-GGOS2&index=8&t=0s][youtube: Writing a Shader in OpenGL]]
 - draw a red triangle
