@@ -1,5 +1,7 @@
-#+title: Cherno OpenGL 08 How I Deal with Shaders in OpenGL
+#+title: Cherno OpenGL 09 Index Buffers in OpenGL
 #+author: 
-#+date: <2019-08-22 Thu 09:41>
-- [[https://www.youtube.com/watch?v=2pv0Fbo-7ms&list=PLlrATfBNZ98foTJPJ_Ev03o2oq3-GGOS2&index=8][YouTube: How I Deal with Shaders in OpenGL]]
-- a better way to write shaders: craete a shader file
+#+date: <2019-09-11 Wed 09:41>
+- [[https://www.youtube.com/watch?v=MXNMC1YAxVQ&list=PLlrATfBNZ98foTJPJ_Ev03o2oq3-GGOS2&index=9][YouTube: Index Buffers in OpenGL]]
+- Index Buffer allows us to reuse existing vertices. 
+* Errors:
+1. ~glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);~ ~GL_UNSIGNED_INT~ rather than ~GL_INT~ bc any indexd buffer is unsigned. ~GL_INT~ gives a black screen. 

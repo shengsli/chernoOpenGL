@@ -81,18 +81,32 @@ int main(void) {
 	if (glewInit() != GLEW_OK) std::cout << "Error!" << std::endl;
 	std::cout << glGetString(GL_VERSION) << std::endl;
 
-	float positions[6] = {
-		-0.5f, -0.5f,
-		 0.0f,  0.5f,
-		 0.5f, -0.5f
+	float positions[] = {
+		-0.5f, -0.5f,//0
+		 0.5f, -0.5f,//1
+		 0.5f,  0.5f,//2
+		-0.5f,  0.5f //3
 	};
+
+	unsigned int indices[] = {
+		0,1,2,
+		2,3,0
+	};
+
+	// we still need this vertex buffer
 	unsigned int buffer;
 	glGenBuffers(1, &buffer);//generate buffer
 	glBindBuffer(GL_ARRAY_BUFFER, buffer);//bind buffer before draw
-	glBufferData(GL_ARRAY_BUFFER, 6*sizeof(float), positions, GL_STATIC_DRAW);//put data into buffer
+	glBufferData(GL_ARRAY_BUFFER, 6 * 2 * sizeof(float), positions, GL_STATIC_DRAW);//put data into buffer
 
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, (const void *)0);
+
+	// index buffer
+	unsigned int ibo;
+	glGenBuffers(1, &ibo);//generate buffer
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);//bind buffer before draw
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, 6 * 2 * sizeof(unsigned int), indices, GL_STATIC_DRAW);//put data into buffer, has to be unsigned
 
 	ShaderProgramSource source = ParseShader("res/shaders/Basic.shader");
 	std::cout << source.VertexSource << std::endl;
@@ -104,7 +118,7 @@ int main(void) {
 	while (!glfwWindowShouldClose(window)) {/* Loop until the user closes the window */
 		glClear(GL_COLOR_BUFFER_BIT);/* Render here */
 
-		glDrawArrays(GL_TRIANGLES, 0, 3);
+		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);// has to be glDrawElements. nullptr bc we have bound array buffer to ibo. GL_UNSIGNED_INT bc indexd buffer is unsigned int. 
 
 		glfwSwapBuffers(window);/* Swap front and back buffers */
 		glfwPollEvents();/* Poll for and process events */
