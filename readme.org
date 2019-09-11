@@ -3,5 +3,9 @@
 #+date: <2019-09-11 Wed 09:41>
 - [[https://www.youtube.com/watch?v=MXNMC1YAxVQ&list=PLlrATfBNZ98foTJPJ_Ev03o2oq3-GGOS2&index=9][YouTube: Index Buffers in OpenGL]]
 - Index Buffer allows us to reuse existing vertices. 
-* Errors:
-1. ~glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);~ ~GL_UNSIGNED_INT~ rather than ~GL_INT~ bc any indexd buffer is unsigned. ~GL_INT~ gives a black screen. 
+- A common error: ~glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);~ ~GL_UNSIGNED_INT~ rather than ~GL_INT~ bc any indexd buffer is unsigned. ~GL_INT~ gives a black screen. 
+* Summary
+1. vertex buffer
+2. index buffer
+3. glDrawElement() is the function to be using most of the time
+4. This is the way to render 90% of stuff onto screen, even in a full long professional like AAA games. 
