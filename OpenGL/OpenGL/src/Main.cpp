@@ -6,6 +6,24 @@
 #include <string>
 #include <sstream>
 
+#define ASSERT(x) if (!(x)) __debugbreak();//an MSVC function, which is intrinsic to the compiler. It inserts a breakpoint. 
+#define GLCall(x) GLClearError();\
+	x;\
+	ASSERT(GLLogCall(#x, __FILE__, __LINE__))
+
+static void GLClearError() {
+	while (glGetError() != GL_NO_ERROR);
+}
+
+static bool GLLogCall(const char* function, const char* file, int line) {
+	while (GLenum error = glGetError()) {
+		std::cout << "[OpenGL Error] (" << error << ")" << function << 
+			"" << file << ":" << line << std::endl;
+		return false;
+	}
+	return true;
+}
+
 struct ShaderProgramSource {
 	std::string VertexSource;
 	std::string FragmentSource;
@@ -95,12 +113,12 @@ int main(void) {
 
 	// we still need this vertex buffer
 	unsigned int buffer;
-	glGenBuffers(1, &buffer);//generate buffer
-	glBindBuffer(GL_ARRAY_BUFFER, buffer);//bind buffer before draw
-	glBufferData(GL_ARRAY_BUFFER, 6 * 2 * sizeof(float), positions, GL_STATIC_DRAW);//put data into buffer
+	GLCall(glGenBuffers(1, &buffer));//generate buffer
+	GLCall(glBindBuffer(GL_ARRAY_BUFFER, buffer));//bind buffer before draw
+	GLCall(glBufferData(GL_ARRAY_BUFFER, 6 * 2 * sizeof(float), positions, GL_STATIC_DRAW));//put data into buffer
 
-	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, (const void *)0);
+	GLCall(glEnableVertexAttribArray(0));
+	GLCall(glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, (const void *)0));
 
 	// index buffer
 	unsigned int ibo;
@@ -118,7 +136,13 @@ int main(void) {
 	while (!glfwWindowShouldClose(window)) {/* Loop until the user closes the window */
 		glClear(GL_COLOR_BUFFER_BIT);/* Render here */
 
-		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);// has to be glDrawElements. nullptr bc we have bound array buffer to ibo. GL_UNSIGNED_INT bc indexd buffer is unsigned int. 
+#if 0
+		GLClearError();
+		glDrawElements(GL_TRIANGLES, 6, GL_INT, nullptr);// has to be glDrawElements. nullptr bc we have bound array buffer to ibo. GL_UNSIGNED_INT bc indexd buffer is unsigned int. 
+		ASSERT(GLLogCall());
+#else
+		GLCall(glDrawElements(GL_TRIANGLES, 6, GL_INT, nullptr));
+#endif
 
 		glfwSwapBuffers(window);/* Swap front and back buffers */
 		glfwPollEvents();/* Poll for and process events */
