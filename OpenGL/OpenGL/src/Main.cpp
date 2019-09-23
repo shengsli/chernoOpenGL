@@ -96,6 +96,7 @@ int main(void) {
 		return -1;
 	}
 	glfwMakeContextCurrent(window);/* Make the window's context current */
+	glfwSwapInterval(1);
 	if (glewInit() != GLEW_OK) std::cout << "Error!" << std::endl;
 	std::cout << glGetString(GL_VERSION) << std::endl;
 
@@ -136,10 +137,19 @@ int main(void) {
 	ASSERT(location != -1);//-1 if the uniform is not found or is unused. 
 	GLCall(glUniform4f(location, 0.8f, 0.3f, 0.8f, 1.0f));//4 floats, int location
 
+	float r = 0.0f;
+	float increment = 0.05f;
 	while (!glfwWindowShouldClose(window)) {/* Loop until the user closes the window */
 		glClear(GL_COLOR_BUFFER_BIT);/* Render here */
 
+		GLCall(glUniform4f(location, r, 0.3f, 0.8f, 1.0f));//4 floats, int location
 		GLCall(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr));
+
+		if (r > 1.0f)
+			increment = -0.05f;
+		else if (r < 0.0f)
+			increment = 0.05f;
+		r += increment;
 
 		glfwSwapBuffers(window);/* Swap front and back buffers */
 		glfwPollEvents();/* Poll for and process events */
