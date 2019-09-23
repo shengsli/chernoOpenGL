@@ -1,24 +1,11 @@
-#+title: Cherno OpenGL 10 Dealing with Errors in OpenGL
+#+title: Cherno OpenGL 11 Uniform in OpenGL
 #+author: 
-#+date: <2019-09-11 Wed 10:15>
-- [[https://www.youtube.com/watch?v=FBbPWSOQ0-w&list=PLlrATfBNZ98foTJPJ_Ev03o2oq3-GGOS2&index=10][YouTube: Dealing with Errors in OpenGL]]
-* 2 main ways of dealing with errors: 
-1. ~glGetError()~, a function we can call. returns a flag (i.e. an error code). keep calling it to get all errors. Typical work flow to debug using ~glGetError()~: 
-   - clear all errors before any function call is given to OpenGL, i.e. call ~glGetError()~ until there is no error. 
-   - ~glDrawElements()~, function might went wrong. 
-   - call ~glGetError()~ to see if ~glDrawElements()~ generates any error. 
-2. Since OpenGL 4.3, ~glDebugCallBack~ is available. It is much better than ~glGetError()~. 
-* This Episode focuses solely on ~glGetError()~. 
-** clear errors and check errors
-#+BEGIN_SRC C
-static void GLCheckError()
-static bool GLLogCall()
-static bool GLLogCall(const char* function, const char* file, int line)
-#+END_SRC
-** macro
-#+BEGIN_SRC C
-ASSERT()
-GLCall()
-#+END_SRC
-- This example is very incomplete. It might raise problems with scopes and if-statement.  
-* TODO look up more on macro
+#+date: <2019-09-23 Mon 13:15>
+* 2 main ways to transfer data from cpu to gpu
+1. attribute, get data via a vertex buffer
+2. uniform (we will focus on uniform)
+* Comparison btw and attribute and uniform 
+1. attributes are set per vertex, e.g. position attributes can be any kind of data. 
+2. uniforms are set per draw. 
+   - We can set uniform up before we call glDrawElements or glDrawArrays, etc.
+* Change color in our rendering loop

@@ -122,27 +122,24 @@ int main(void) {
 
 	// index buffer
 	unsigned int ibo;
-	glGenBuffers(1, &ibo);//generate buffer
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo);//bind buffer before draw
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, 6 * 2 * sizeof(unsigned int), indices, GL_STATIC_DRAW);//put data into buffer, has to be unsigned
+	GLCall(glGenBuffers(1, &ibo));//generate buffer
+	GLCall(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibo));//bind buffer before draw
+	GLCall(glBufferData(GL_ELEMENT_ARRAY_BUFFER, 6 * 2 * sizeof(unsigned int), indices, GL_STATIC_DRAW));//put data into buffer, has to be unsigned
 
 	ShaderProgramSource source = ParseShader("res/shaders/Basic.shader");
-	std::cout << source.VertexSource << std::endl;
-	std::cout << source.FragmentSource << std::endl;
+	//std::cout << source.VertexSource << std::endl;
+	//std::cout << source.FragmentSource << std::endl;
 
 	unsigned int shader = CreateShader(source.VertexSource, source.FragmentSource); 
-	glUseProgram(shader);
+	GLCall(glUseProgram(shader));//bound shader
+	int location = glGetUniformLocation(shader, "u_Color");//retrieve location of u_Color
+	ASSERT(location != -1);//-1 if the uniform is not found or is unused. 
+	GLCall(glUniform4f(location, 0.8f, 0.3f, 0.8f, 1.0f));//4 floats, int location
 
 	while (!glfwWindowShouldClose(window)) {/* Loop until the user closes the window */
 		glClear(GL_COLOR_BUFFER_BIT);/* Render here */
 
-#if 0
-		GLClearError();
-		glDrawElements(GL_TRIANGLES, 6, GL_INT, nullptr);// has to be glDrawElements. nullptr bc we have bound array buffer to ibo. GL_UNSIGNED_INT bc indexd buffer is unsigned int. 
-		ASSERT(GLLogCall());
-#else
-		GLCall(glDrawElements(GL_TRIANGLES, 6, GL_INT, nullptr));
-#endif
+		GLCall(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr));
 
 		glfwSwapBuffers(window);/* Swap front and back buffers */
 		glfwPollEvents();/* Poll for and process events */
