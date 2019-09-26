@@ -1,11 +1,4 @@
-#+title: Cherno OpenGL 11 Uniform in OpenGL
+#+title: Cherno OpenGL 12 Vertex Arrays
 #+author: 
-#+date: <2019-09-23 Mon 13:15>
-* 2 main ways to transfer data from cpu to gpu
-1. attribute, get data via a vertex buffer
-2. uniform (we will focus on uniform)
-* Comparison btw and attribute and uniform 
-1. attributes are set per vertex, e.g. position attributes can be any kind of data. 
-2. uniforms are set per draw. 
-   - We can set uniform up before we call glDrawElements or glDrawArrays, etc.
-* Change color in our rendering loop
+#+date: <2019-09-24 Tue 14:51>
+Vertex array objects are what contain states. 
