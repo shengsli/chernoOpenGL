@@ -4,7 +4,7 @@
 * 2 main ways to transfer data from cpu to gpu
 1. attribute, get data via a vertex buffer
 2. uniform (we will focus on uniform)
-* Comparison btw and attribute and uniform 
+* Comparison btw attribute and uniform 
 1. attributes are set per vertex, e.g. position attributes can be any kind of data. 
 2. uniforms are set per draw. 
    - We can set uniform up before we call glDrawElements or glDrawArrays, etc.
