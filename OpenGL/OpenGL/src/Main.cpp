@@ -163,9 +163,9 @@ int main(void) {
 		GLCall(glUniform4f(location, r, 0.3f, 0.8f, 1.0f));//4 floats, int location
 
 		//vertex buffer
-		GLCall(glBindBuffer(GL_ARRAY_BUFFER, buffer));
-		GLCall(glEnableVertexAttribArray(0));//set up the layout. do this every time, cuz it might change if we draw another object with a different layout. 
-		GLCall(glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, (const void *)0));//do this every time
+		//GLCall(glBindBuffer(GL_ARRAY_BUFFER, buffer));
+		//GLCall(glEnableVertexAttribArray(0));//set up the layout. do this every time, cuz it might change if we draw another object with a different layout. 
+		//GLCall(glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, (const void *)0));//do this every time
 		
 		//jsut bind vertex array and index buffer
 		GLCall(glBindVertexArray(vao));
